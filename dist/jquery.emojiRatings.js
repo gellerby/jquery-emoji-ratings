@@ -1,9 +1,9 @@
 /*
- *  jquery-boilerplate - v4.0.0
- *  A jump-start for jQuery plugins development.
- *  http://jqueryboilerplate.com
+ *  jquery-emojiRatings - v1.0.0
+ *  Adds a simple rating input made of emojis
+ *  http://jqueryemojiratings.com
  *
- *  Made by Zeno Rocha
+ *  Made by Geoff Ellerby
  *  Under MIT License
  */
 // the semi-colon before function invocation is a safety net against concatenated
@@ -79,12 +79,16 @@
 					var 
 						emoji = this.decodeEmoji(this.settings.emoji),
 						count = this.settings.count,
+						container = "<div class='jqEmoji-container'>",
 						star;
 
 					for (var i = 0; i < count; i++) {
 						star = "<span class='jqEmoji' data-index='" + i + "'>" + emoji + "</span>";
-						$(this.element).append(star);
+						container += star;
 					}
+					container += "</div>";
+
+					$(this.element).append(container);
 				},
 				clearEmojis: function() {
 					var

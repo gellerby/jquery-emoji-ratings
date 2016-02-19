@@ -71,12 +71,16 @@
 					var 
 						emoji = this.decodeEmoji(this.settings.emoji),
 						count = this.settings.count,
+						container = "<div class='jqEmoji-container'>",
 						star;
 
 					for (var i = 0; i < count; i++) {
 						star = "<span class='jqEmoji' data-index='" + i + "'>" + emoji + "</span>";
-						$(this.element).append(star);
+						container += star;
 					}
+					container += "</div>";
+
+					$(this.element).append(container);
 				},
 				clearEmojis: function() {
 					var

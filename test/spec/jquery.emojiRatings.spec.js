@@ -48,20 +48,30 @@
 
 	});
 
-	QUnit.test("Appends 5 <span>s and 1 <style> element", function ( assert ) {
-		$fixture.emojiRating();
+	QUnit.test("Appends a container with class 'jqEmoji-container' with 5 <span>s and 1 <style> element", 
+		function ( assert ) {
+			$fixture.emojiRating();
 
-		assert.equal($fixture.children().length, 6);
-	});
+			var container = $fixture.find("div");
+
+			assert.equal(container.hasClass("jqEmoji-container"), true);
+			assert.equal(container.children("span").length, 5);
+		}
+	);
 
 	QUnit.test("has #colorEmojis working as expected", function ( assert ) {
 		$fixture.emojiRating();
 
 		var instance = $fixture.data("plugin_emojiRating"),
-				expectedOpacity = 0.2;
+				expectedOpacity = 0.2,
+				emojiSelector = $fixture.find(".jqEmoji-container").find("span:last-child");
+
+		function roundToHundredth(number) {
+			return parseFloat(number, 10).toFixed(1);
+		}
 
 		// Is last rendered emoji at initial opacity
-		assert.equal(parseFloat($fixture.find("span:last-child").css("opacity"), 10).toFixed(1), expectedOpacity);
+		assert.equal(roundToHundredth(emojiSelector.css("opacity")), expectedOpacity);
 
 		instance.colorEmojis(5);
 		assert.equal($fixture.find("span:last-child").css("opacity"), 1);
