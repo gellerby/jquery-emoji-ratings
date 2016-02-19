@@ -9,13 +9,17 @@ module.exports = function(config) {
     plugins: ['karma-qunit', 'karma-phantomjs-launcher'],
     frameworks: ['qunit'],
     browsers: ['PhantomJS'],
-    port: 9876,
     reporters: ['progress'],
-    // cli runner port
+
+    port: 9876,
     runnerPort: 9100,
+
 		autoWatch: true,
+
     captureTimeout: 60000,
+
     logLevel: config.LOG_INFO,
+    
     singleRun: false
   });
 };

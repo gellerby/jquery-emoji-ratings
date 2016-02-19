@@ -3,14 +3,15 @@
 	<head>
 		<title>jQuery Boilerplate</title>
 		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
-		<script src="../src/jquery.boilerplate.js"></script>
+		<script src="../src/jquery.emojiRating.js"></script>
 	</head>
 	<body>
 		<div id="element"></div>
 		<script>
 			$(function() {
-				$("#element").defaultPluginName({
-					propertyName: "a custom value"
+				$("#element").emojiRating({
+					fontSize: 100,
+					count: 5
 				});
 			});
 		</script>

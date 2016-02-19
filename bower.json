@@ -1,18 +1,19 @@
 {
-	"name": "jquery-boilerplate",
-	"version": "4.0.0",
-	"homepage": "http://jqueryboilerplate.com",
+	"name": "jquery-emojiRatings",
+	"version": "1.0.0",
+	"homepage": "http://jqueryemojiratings.com",
 	"authors": [
-		"Zeno Rocha <hi@zenorocha.com>"
+		"Geoff Ellerby <gellerby@gmail.com>"
 	],
-	"description": "A jump-start for jQuery plugins development.",
-	"main": "src/jquery.boilerplate.js",
+	"description": "Adds a simple rating input made of emojis.",
+	"main": "src/jquery.emojiRatings.js",
 	"keywords": [
 		"jquery",
 		"plugin",
-		"boilerplate",
+		"ratings",
+		"emoji",
 		"jquery-plugin",
-		"jquery-boilerplate"
+		"jquery-emojiRatings"
 	],
 	"license": "MIT"
 }
