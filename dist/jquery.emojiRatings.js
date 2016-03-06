@@ -25,6 +25,7 @@
 		var 
 			pluginName = "emojiRating",
 			clicked = false,
+			$element,
 			defaults = {
 				emoji: "U+2B50",
 				count: 5,
@@ -35,10 +36,6 @@
 		// The actual plugin constructor
 		function Plugin ( element, options ) {
 				this.element = element;
-				// jQuery has an extend method which merges the contents of two or
-				// more objects, storing the result in the first object. The first object
-				// is generally empty as we don't want to alter the default options for
-				// future instances of the plugin
 				this.settings = $.extend( {}, defaults, options );
 				this._defaults = defaults;
 				this._name = pluginName;
@@ -48,12 +45,8 @@
 		// Avoid Plugin.prototype conflicts
 		$.extend(Plugin.prototype, {
 				init: function () {
-						// Place initialization logic here
-						// You already have access to the DOM element and
-						// the options via the instance, e.g. this.element
-						// and this.settings
-						// you can add more functions like the one below and
-						// call them like the example bellow
+						$element = $(this.element);
+
 						this.setupStyles();
 						this.renderEmojis();
 						this.handleClick();
@@ -73,7 +66,7 @@
 						fontRule = "font-size:" + this.settings.fontSize + "px;",
 						styles = ".jqEmoji{" + defaultRules + fontRule + "}";
 
-					$(this.element).append("<style>" + styles + "</style>");
+					$element.append("<style>" + styles + "</style>");
 				},
 				renderEmojis: function () {
 					var 
@@ -88,20 +81,14 @@
 					}
 					container += "</div>";
 
-					$(this.element).append(container);
+					$element.append(container);
 				},
 				clearEmojis: function() {
-					var
-						$element = $(this.element);
-
 					$element.find(".jqEmoji").each( function() {
 						$(this).css("opacity", 0.2);
 					});
 				},
 				colorEmojis: function(count) {
-					var 
-						$element = $(this.element);
-
 					this.clearEmojis();
 
 					for (var i = 0; i < count; i++) {
@@ -110,26 +97,25 @@
 				},
 				handleClick: function() {
 					var 
-						$element = $(this.element),
 						self = this;
 
 					$element.on("click", ".jqEmoji", function() {
 						var 
-							count = parseInt($(this).data("index"), 10) + 1;
+              index = $(this).data("index"),
+							count = parseInt(index, 10) + 1;
 
 						self.colorEmojis(count);
+
 						if (!clicked) {
 							self.appendInput(count);
 							clicked = true;
 						} else {
 							self.updateInput(count);
 						}
-						
 					});
 				},
 				handleHover: function() {
 					var 
-						$element = $(this.element),
 						self = this;
 
 					$element.on({
@@ -151,7 +137,6 @@
 				},
 				appendInput: function(count) {
 					var 
-						$element = $(this.element),
 						inputName = this.settings.inputName,
 						defaultAttrs = "<input type='hidden' class='emoji-rating'",
 						inputElem = defaultAttrs + " name='" + inputName + "' value='" + count + "' />";
@@ -160,7 +145,6 @@
 				},
 				updateInput: function(count) {
 					var 
-						$element = $(this.element),
 						inputElem = $element.find("input.emoji-rating");
 
 					inputElem.val(count);

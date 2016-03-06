@@ -59,22 +59,38 @@
 		}
 	);
 
-	QUnit.test("has #colorEmojis working as expected", function ( assert ) {
-		$fixture.emojiRating();
+	QUnit.test("has #colorEmojis working as expected", 
+		function ( assert ) {
+			$fixture.emojiRating();
 
-		var instance = $fixture.data("plugin_emojiRating"),
-				expectedOpacity = 0.2,
-				emojiSelector = $fixture.find(".jqEmoji-container").find("span:last-child");
+			var instance = $fixture.data("plugin_emojiRating"),
+					expectedOpacity = 0.2,
+					emojiSelector = $fixture.find(".jqEmoji-container").find("span:last-child");
 
-		function roundToHundredth(number) {
-			return parseFloat(number, 10).toFixed(1);
+			function roundToHundredth(number) {
+				return parseFloat(number, 10).toFixed(1);
+			}
+
+			// Is last rendered emoji at initial opacity
+			assert.equal(roundToHundredth(emojiSelector.css("opacity")), expectedOpacity);
+
+			instance.colorEmojis(5);
+			assert.equal($fixture.find("span:last-child").css("opacity"), 1);
 		}
+	);
 
-		// Is last rendered emoji at initial opacity
-		assert.equal(roundToHundredth(emojiSelector.css("opacity")), expectedOpacity);
+	QUnit.test("has click handles working as expected", 
+		function ( assert ) {
+			$fixture.emojiRating();
 
-		instance.colorEmojis(5);
-		assert.equal($fixture.find("span:last-child").css("opacity"), 1);
-	});
+			var 
+					container = $fixture.find("div"),
+					NUMBER = 5;
+
+			container.find("span:nth-child(" + NUMBER + ")").trigger("click");
+
+			assert.equal($fixture.find(".emoji-rating").val(), NUMBER);
+		}
+	);
 
 }(jQuery, QUnit));
