@@ -29,11 +29,32 @@ options = {
 ```
 
 ### Emoji
+Use either Unicode Entity or shortname from dictionary below
+
+Shortname | Emoji
+--- | ---
+smile | &#x1F603;
+wink | &#x1F609;
+laughing | &#x1F606;
+blush | &#x1F60A;
+heart_eyes | &#x1F60D;
+kissing_heart | &#x1F618;
+heart | &#x2764;
+heart_with_arrow | &#x1F498;
+broken_heart | &#x1F494;
+tongue_out_wink | &#x1F61C;
+tongue_out_eyes_closed | &#x1F61D;
+angry | &#x1F620;
+crying | &#x1F622;
+scream | &#x1F631;
+pray | &#x1F64F; 
+poo | &#x1F4A9;
+star | &#x2B50;
 
 [Lookup Unicode Entity](http://apps.timwhitlock.info/emoji/tables/unicode)
 
 ```javascript
-emoji: 'U+1F438' //Default: U+2B50 ⭐
+emoji: 'poo' //Default: 'star' or 'U+2B50' ⭐
 ```
 
 ### Count

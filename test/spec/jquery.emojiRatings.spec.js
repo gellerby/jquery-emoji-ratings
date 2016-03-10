@@ -84,12 +84,27 @@
 			$fixture.emojiRating();
 
 			var 
-					container = $fixture.find("div"),
-					NUMBER = 5;
+				container = $fixture.find("div"),
+				NUMBER = 5;
 
 			container.find("span:nth-child(" + NUMBER + ")").trigger("click");
 
 			assert.equal($fixture.find(".emoji-rating").val(), NUMBER);
+		}
+	);
+
+	QUnit.test("has emoji dictionary lookup working as expected", 
+		function ( assert ) {
+			$fixture.emojiRating({
+        emoji: "poo"
+      });
+
+      var 
+        container = $fixture.find("div"),
+        expected = "💩",
+        value = container.find("span:first-child").html();
+
+      assert.equal(value, expected);
 		}
 	);
 

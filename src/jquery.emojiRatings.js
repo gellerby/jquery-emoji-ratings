@@ -23,7 +23,26 @@
 				count: 5,
 				fontSize: 16,
 				inputName: "rating"
-			};
+			},
+      emojiDictionary = {
+        smile: "U+1F603",
+        wink: "U+1F609",
+        laughing: "U+1F606",
+        blush: "U+1F60A",
+        heart_eyes: "U+1F60D",
+        kissing_heart: "U+1F618",
+        heart: "U+2764",
+        heart_with_arrow: "U+1F498",
+        broken_heart: "U+1F494",
+        tongue_out_wink: "U+1F61C",
+        tongue_out_eyes_closed: "U+1F61D",
+        angry: "U+1F620",
+        crying: "U+1F622",
+        scream: "U+1F631",
+        pray: "U+1F64F",
+        poo: "U+1F4A9",
+        star: "U+2B50"
+      };
 
 		// The actual plugin constructor
 		function Plugin ( element, options ) {
@@ -44,13 +63,16 @@
 						this.handleClick();
 						this.handleHover();
 				},
+        lookupEmoji: function(emoji) {
+          return emojiDictionary[emoji];
+        },
 				decodeEmoji: function(emoji) {
 					// convert unicode to html entity
-					if (emoji.indexOf("U+") > -1) {
-	    			return "&#x" + emoji.slice(2) + ";";
+					if (emoji.indexOf("U+") < 0) {
+            emoji = this.lookupEmoji(emoji);		
 					}
 
-					return emoji;
+					return "&#x" + emoji.slice(2) + ";";
 				},
 				setupStyles: function() {
 					var 
