@@ -50,6 +50,8 @@ scream | &#x1F631;
 pray | &#x1F64F; 
 poo | &#x1F4A9;
 star | &#x2B50;
+thinking | &#x1F914;
+hugging | &#x1F917;
 
 [Lookup Unicode Entity](http://apps.timwhitlock.info/emoji/tables/unicode)
 
