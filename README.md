@@ -94,5 +94,5 @@ onUpdate: function(rating) {
 
 ### TODOs
 
-*Add more callbacks/events
-*Tests for callbacks
+* Add more callbacks/events
+* Tests for callbacks
