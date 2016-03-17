@@ -30,7 +30,8 @@
 			emoji: "U+2B50",
 			count: 5,
 			fontSize: 16,
-			inputName: "rating"
+			inputName: "rating",
+			onUpdate: null
 		},
     emojiDictionary = {
       smile: "U+1F603",
@@ -68,6 +69,7 @@
 		init: function () {
 			$element = $(this.element);
 
+			this.count = 0;
 			this.setupStyles();
 			this.renderEmojis();
 			this.handleClick();
@@ -129,12 +131,16 @@
 					count = parseInt(index, 10) + 1;
 
 				self.colorEmojis(count);
+				self.count = count;
 
 				if (!clicked) {
 					self.appendInput(count);
 					clicked = true;
 				} else {
 					self.updateInput(count);
+				}
+				if ($.isFunction(self.settings.onUpdate)) {
+					self.settings.onUpdate.call(self, count);
 				}
 			});
 		},

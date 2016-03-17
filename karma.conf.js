@@ -6,9 +6,9 @@ module.exports = function(config) {
 			'test/setup.js',
       'test/spec/*'
     ],
-    plugins: ['karma-qunit', 'karma-phantomjs-launcher', 'karma-firefox-launcher'],
+    plugins: ['karma-qunit', 'karma-phantomjs-launcher'],
     frameworks: ['qunit'],
-    browsers: ['PhantomJS', 'Firefox'],
+    browsers: ['PhantomJS'],
     reporters: ['progress'],
 
     port: 9876,

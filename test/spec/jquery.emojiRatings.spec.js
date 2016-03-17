@@ -43,7 +43,8 @@
 			count: 5,
 			fontSize: 32,
 			emoji: "U+1F64F",
-			inputName: "rating"
+			inputName: "rating",
+			onUpdate: null
 		}, "extend plugin settings");
 
 	});

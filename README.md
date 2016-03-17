@@ -24,7 +24,8 @@ options = {
 	emoji: 'U+2B50',
 	count: 5,
 	fontSize: 16,
-	inputName: 'rating'
+	inputName: 'rating',
+	onUpdate: function() {}
 }
 ```
 
@@ -81,6 +82,16 @@ Will generate a hidden input with the name specified
 inputName: 'product-rating' //Default: "rating"
 ```
 
+### onUpdate Callback
+
+Called every time a rating is selected or updated with optional value
+
+```javascript
+onUpdate: function(rating) {
+	console.log(rating);
+}```
+
 ### TODOs
 
-*Add fallback for Chrome
+*Add more callbacks/events
+*Tests for callbacks
