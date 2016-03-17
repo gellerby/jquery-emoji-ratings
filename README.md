@@ -89,7 +89,8 @@ Called every time a rating is selected or updated with optional value
 ```javascript
 onUpdate: function(rating) {
 	console.log(rating);
-}```
+}
+```
 
 ### TODOs
 
