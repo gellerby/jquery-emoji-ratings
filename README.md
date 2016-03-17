@@ -94,5 +94,7 @@ onUpdate: function(rating) {
 
 ### TODOs
 
-* Add more callbacks/events
-* Tests for callbacks
+* Add docs on styling with CSS
+* More callbacks/event hooks
+* Tests for callbacks/event hooks
+* Make some unnecessarily public functions private
