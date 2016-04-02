@@ -64,6 +64,17 @@
 		this.init();
 	}
 
+	function lookupEmoji(emoji) {
+		return emojiDictionary[emoji];
+	}
+
+	function decodeEmoji(emoji) {
+		if (emoji.indexOf("U+") < 0) {
+        emoji = lookupEmoji(emoji);		
+			}
+		return "&#x" + emoji.slice(2) + ";";
+	}
+
 	// Avoid Plugin.prototype conflicts
 	$.extend(Plugin.prototype, {
 		init: function () {
@@ -75,17 +86,6 @@
 			this.handleClick();
 			this.handleHover();
 		},
-    lookupEmoji: function(emoji) {
-      return emojiDictionary[emoji];
-    },
-		decodeEmoji: function(emoji) {
-			// convert unicode to html entity
-			if (emoji.indexOf("U+") < 0) {
-        emoji = this.lookupEmoji(emoji);		
-			}
-
-			return "&#x" + emoji.slice(2) + ";";
-		},
 		setupStyles: function() {
 			var 
 				defaultRules = "cursor:pointer;opacity:0.2;text-decoration:none;",
@@ -96,7 +96,7 @@
 		},
 		renderEmojis: function () {
 			var 
-				emoji = this.decodeEmoji(this.settings.emoji),
+				emoji = decodeEmoji(this.settings.emoji),
 				count = this.settings.count,
 				container = "<div class='jqEmoji-container'>",
 				star;

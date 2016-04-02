@@ -97,4 +97,3 @@ onUpdate: function(rating) {
 * Add docs on styling with CSS
 * More callbacks/event hooks
 * Tests for callbacks/event hooks
-* Make some unnecessarily public functions private
