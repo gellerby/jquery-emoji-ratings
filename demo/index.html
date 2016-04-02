@@ -9,36 +9,48 @@
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<h2>jQuery Emoji Ratings Demo</h2>
-				<form>
+				<form id="demo">
 				  <div class="form-group">
 				    <label for="firstName">First Name</label>
-				    <input type="text" class="form-control" id="firstName">
+				    <input type="text" class="form-control" id="firstName" name="firstName">
 				  </div>
 				  <div class="form-group">
 				    <label for="lastName">Last Name</label>
-				    <input type="text" class="form-control" id="lastName">
+				    <input type="text" class="form-control" id="lastName" name="lastName">
 				  </div>
 				  <div class="form-group">
 				    <label for="comments">Comments</label>
-				    <textarea class="form-control" id="comments"></textarea>
+				    <textarea class="form-control" id="comments" name="comments"></textarea>
 				  </div>
 				  <div class="form-group" id="rating">
 				    <label for="rating">Rating</label>
 				  </div>
-				  <button type="submit" class="btn btn-default btn-block">Submit 
+				  <button type="submit" class="btn btn-primary btn-block">Submit 
 				  	<span class="review-text" style="display:none"><span id="starCount"></span> Review</span>
 				 	</button>
 				</form>
 			</div>
 		</div>
 		<script src="../bower_components/jquery/dist/jquery.min.js"></script>
-		<script src="../src/jquery.emojiRatings.js"></script>
+		<script src="../dist/jquery.emojiRatings.min.js"></script>
 		<script>
 			$("#rating").emojiRating({
+				fontSize: 32,
 				onUpdate: function(count) {
 					$(".review-text").show();
 					$("#starCount").html(count + " Star");
 				}
+			});
+			$("#demo").submit( function(e) {
+				e.preventDefault();
+
+				var 
+					name = $(this).find('#firstName').val() + ' ' + $(this).find('#lastName').val(),
+					comments = $(this).find('#comments').val(),
+					rating = $(this).find('.emoji-rating').val(),
+					alert = 'Name: ' + name + '\nComments: ' + comments + '\nRating: ' + rating;
+
+				window.alert(alert);
 			});
 		</script>
 	</body>
