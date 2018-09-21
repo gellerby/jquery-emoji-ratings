@@ -30,6 +30,7 @@
 			emoji: "U+2B50",
 			count: 5,
 			fontSize: 16,
+			initRating: 0,
 			inputName: "rating",
 			onUpdate: null
 		},
@@ -83,6 +84,7 @@
 			this.count = 0;
 			this.setupStyles();
 			this.renderEmojis();
+			this.handleInitRating();
 			this.handleClick();
 			this.handleHover();
 		},
@@ -178,6 +180,22 @@
 				inputElem = $element.find("input.emoji-rating");
 
 			inputElem.val(count);
+		},
+		handleInitRating: function() {
+			var
+				self = this,
+				rating = this.settings.initRating;
+				if(rating >0){
+					self.colorEmojis(rating);
+					self.count = rating;
+
+					if (!clicked) {
+						self.appendInput(rating);
+						clicked = true;
+					} else {
+						self.updateInput(rating);
+					}
+				}
 		}
 	});
 
